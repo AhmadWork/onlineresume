@@ -10,7 +10,7 @@ var bio = {
 
 welcomeMessage: "Welcome to my online CV ",
 skills: ["Java","HTML", "CSS", "JavaScript", "jQuery"],
-bioPic: "images/fry.jpg",
+biopic: "images/fry.jpg",
 
 display: function () {
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -20,14 +20,14 @@ var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedGithub);
-$("#topContacts").append(formattedLocation);
+$("#topContacts, #footerContacts").append(formattedMobile);
+$("#topContacts, #footerContacts").append(formattedEmail);
+$("#topContacts, #footerContacts").append(formattedGithub);
+$("#topContacts, #footerContacts").append(formattedLocation);
 $("#header").append(formattedBioPic);
 $("#header").append(formattedWelcomeMessage);
 
@@ -52,15 +52,15 @@ var education = {
     schools : [{
         name: "alsadiq High School",
         degree: "High School Degree",
-        date: "2013",
+        dates: "2013",
         location: "alsadiq high school , Riyadh",
-        major: "scince"
+        majors: ["scince"]
     },{
         name: "King Saud University",
         degree: "bachelor",
-        date: "2018",
+        dates: "2018",
         location: "King saud university ,Riyadh",
-        major: "Software Engineering",
+        majors: ["Software Engineering"],
        
     }],
     onlineClasses : [{
@@ -82,15 +82,17 @@ if (education.schools.length > 0) {
 for (var i = 0; i < education.schools.length; i++) {
         var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
         var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-        var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[i].date);
+        var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
         var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-        var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
-      
+        
       $(".education-entry").append(formattedschoolName);
           $(".education-entry").append(formattedschoolDegree);
              $(".education-entry").append(formattedschoolDates);
                 $(".education-entry").append(formattedschoolLocation);
+               for (var j = 0; j < education.schools[i].majors.length; j++) {
+        var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors[j]);
         $(".education-entry").append(formattedschoolMajor);
+    }
   }
 }
     var formattedonlineHeader = HTMLonlineClasses;
@@ -123,29 +125,28 @@ var projects = {
 	project :[
 {
 title : "Mockup Article",
-date : "2016-2-2",
-desc : "tranforming a pdf file to a website",
-img : "images/p1.jpeg"
-}
-,
+dates : "2016-2-2",
+description : "tranforming a pdf file to a website",
+img : ["images/p1.jpeg"]
+},
 {
 title : "Animal Card",
-date : "2016-5-2",
-desc : "Making a simple animal card ",
-img : "images/p2.jpg"
+dates : "2016-5-2",
+description : "Making a simple animal card ",
+img : ["images/p2.jpg"]
 }
 ,
 {
 title : "Porfolio website",
-date : "2016-7-2",
-desc : "Making a personal Porfolio website ",
-img : "images/p3.jpeg"
+dates : "2016-7-2",
+description : "Making a personal Porfolio website ",
+img : ["images/p3.jpeg"]
 }
 ,{
 title : "Online Resume",
-date : "2016-9-2",
-desc : "Makin an online resume",
-img : "images/p4.jpg"
+dates : "2016-9-2",
+description : "Makin an online resume",
+img : ["images/p4.jpg"]
 
 }
 ]
@@ -157,18 +158,19 @@ if(projects.project.length>0){
 
 for (var i = 0; i < projects.project.length; i++) {
 var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[i].title);
-var formattedProjectDates= HTMLprojectDates.replace("%data%", projects.project[i].date);
-var formattedProjectDesc = HTMLprojectDescription.replace("%data%", projects.project[i].desc);
-var formattedProjectimg = HTMLprojectImage.replace("%data%", projects.project[i].img);
+var formattedProjectDates= HTMLprojectDates.replace("%data%", projects.project[i].dates);
+var formattedProjectDesc = HTMLprojectDescription.replace("%data%", projects.project[i].description);
+
 
  $(".project-entry").append(formattedProjectTitle);
 
 $(".project-entry").append(formattedProjectDates);
 
 $(".project-entry").append(formattedProjectDesc);
-
+for (var j = 0; j < projects.project.i.length; j++) {
+var formattedProjectimg = HTMLprojectImage.replace("%data%", projects.project[i].img[j]);
 $(".project-entry").append(formattedProjectimg);
-
+}
 }
 }
 }
@@ -178,37 +180,36 @@ projects.display();
 
 
 
-var works = {
+var work = {
 
-	work :[
+	jobs :[
 {
-Emp : "ELM co",
+employer : "ELM co",
 title : " junior software Engineer",
 dates : "2013-2015",
 location : "elm ,riyadh",
-desc: "one of the junior software Engineer staff"
+description: "one of the junior software Engineer staff"
 }
 ,
 {
-Emp : "IBM co",
+employer : "IBM co",
 title : "project manager",
 dates : "2015-present",
 location : "IBM ,riyadh",
-desc: "Project Manager for a secret project"
+description: "Project Manager for a secret project"
 }
-]
-,
+],
 display : function () {
 if(works.work.length>0){
   $("#workExperience").append(HTMLworkStart);
 
 
 for (var i = 0; i < works.work.length; i++) {
-var formattedWorkemp = HTMLworkEmployer.replace("%data%", works.work[i].Emp);
-var formattedWorkTitle= HTMLworkTitle.replace("%data%", works.work[i].title);
-var formattedWorkDates = HTMLworkDates.replace("%data%", works.work[i].dates);
-var formattedWorkLocation = HTMLworkLocation.replace("%data%", works.work[i].location);
-var formattedWorkDesc = HTMLworkDescription.replace("%data%", works.work[i].desc);
+var formattedWorkemp = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+var formattedWorkTitle= HTMLworkTitle.replace("%data%", work.jobs[i].title);
+var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+var formattedWorkDesc = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 
 
  $(".work-entry").append(formattedWorkemp);
@@ -229,7 +230,7 @@ works.display();
 
 
 
-var googleMap = googleMap;
+
 
 $("#mapDiv").append(googleMap);
 
