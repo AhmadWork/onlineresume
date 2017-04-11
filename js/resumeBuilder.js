@@ -1,13 +1,7 @@
 var bio = {
   name : "Ahmed alsehaim",
   role : "Front End Web Developer",
-  contacts : {
-            mobile : "966504110581",
-            email : "a7madswe@gmail.com",
-            github : "ahmadswork",
-            location : "Riyadh , saudi arabia"
-          },
-
+  contacts : { mobile : "966504110581",email : "a7madswe@gmail.com",github : "ahmadswork",location : "Riyadh , saudi arabia"},
 welcomeMessage: "Welcome to my online CV ",
 skills: ["Java","HTML", "CSS", "JavaScript", "jQuery"],
 biopic: "images/fry.jpg",
@@ -167,7 +161,7 @@ var formattedProjectDesc = HTMLprojectDescription.replace("%data%", projects.pro
 $(".project-entry").append(formattedProjectDates);
 
 $(".project-entry").append(formattedProjectDesc);
-for (var j = 0; j < projects.project.i.length; j++) {
+for (var j = 0; j < projects.project[i].img.length; j++) {
 var formattedProjectimg = HTMLprojectImage.replace("%data%", projects.project[i].img[j]);
 $(".project-entry").append(formattedProjectimg);
 }
@@ -200,11 +194,11 @@ description: "Project Manager for a secret project"
 }
 ],
 display : function () {
-if(works.work.length>0){
+if(work.jobs.length>0){
   $("#workExperience").append(HTMLworkStart);
 
 
-for (var i = 0; i < works.work.length; i++) {
+for (var i = 0; i < work.jobs.length; i++) {
 var formattedWorkemp = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
 var formattedWorkTitle= HTMLworkTitle.replace("%data%", work.jobs[i].title);
 var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
@@ -226,7 +220,7 @@ $(".work-entry").append(formattedWorkDesc);
 }
 }
 };
-works.display();
+work.display();
 
 
 
